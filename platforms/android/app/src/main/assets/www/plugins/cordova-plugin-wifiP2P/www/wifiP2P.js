@@ -4,5 +4,8 @@ var exec = require('cordova/exec');
 exports.coolMethod = function (arg0, success, error) {
     exec(success, error, 'WifiP2P', 'coolMethod', [arg0]);
 };
+exports.discover = function (success, error) {
+    exec(success, error, 'WifiP2P', 'discover', []);
+};
 
 });
