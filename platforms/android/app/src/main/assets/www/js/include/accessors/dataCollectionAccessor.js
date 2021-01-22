@@ -8,7 +8,10 @@ exports.setup = function() {
 exports.initialize = function() {
 
 
-    wifiP2P.discover(function(response){document.querySelector('#message').innerHTML= response;},function(error){console.log(error);});
+    wifiP2P.discover(function(response){
+                var size = document.createTextNode(response);
+                document.querySelector('#message').appendChild(size);
+                },function(error){console.log(error);});
 
 
 

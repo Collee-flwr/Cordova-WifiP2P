@@ -22,6 +22,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -134,7 +135,9 @@ public class WifiP2P extends CordovaPlugin {
                         public void onPeersAvailable(WifiP2pDeviceList wifiP2pDeviceList) {
                             devices = wifiP2pDeviceList.getDeviceList();
                             Log.d("onPeersAvailable: ", "DevicesList " + devices.size() );
-                            callbackContext.success(devices.size());
+                            PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, devices.size());
+                            pluginResult.setKeepCallback(true);
+                            callbackContext.sendPluginResult(pluginResult);
                         }
                     });
                 }
